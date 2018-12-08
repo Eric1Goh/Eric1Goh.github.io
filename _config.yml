@@ -7,9 +7,9 @@ relative_permalinks: false
 encoding: utf-8
 
 # Setup
-title:               My Website
+title:               Ensemble Learning
 #tagline:             'foo's website
-description:         Foo's blog...
+description:         Ensemble Learning
 url: https://lanyon-plus.sbamin.com
 baseurl: ""
 urlimg: https://lanyon-plus.sbamin.com/images/
