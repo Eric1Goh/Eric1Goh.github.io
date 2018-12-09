@@ -76,12 +76,14 @@ class Node:
             self.depth = depth
 ```
 
+Decision tree는 각 영역의 순도가 증가, 불확실성은 감소하는 방향으로 학습을 진행한다. 이때 사용하는 지표는 엔트로피, 지니계수가 있는데, 엔트로피 방식으로 tree를 구현하였다.
+엔트로피는 다음과 같이 계산한다.
+$$ Entropy(A)=-\sum _{k=1}^{m}{{p}_{k}\log_{2}{{(p}_{k})}}
 
 ```Python
 class DecisionTree:
-
     def __init__(self, max_depth=10, log_level=0):
-        self.root_node = None      # 
+        self.root_node = None      # root node
         self.max_depth = max_depth # tree의 최대 depth
         self.log_level=log_level
         
