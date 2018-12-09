@@ -26,7 +26,7 @@ RandomForest 클래스의 입력값으로 생성할 tree의 개수와 각 tree�
 각 Decision tree별로 학습할 데이터는 입력 받은 데이터와 동일한 크기로 resampling하였다.
 Decision tree에서 사용할 predictor 변수의 개수는 $$$\sqrt{전체 변수 개수}$$$ 로 고정하였다.
 
-```[Python]
+```Python
 class RandomForest:
     def __init__(self, num_tree, max_depth=1):
         self.trees = []     #학습이 완료된 tree의 list
@@ -65,7 +65,7 @@ class RandomForest:
  * Leaf node의 경우는 최종 분류값(results)이 저장된다.
  * 그 외 node에서는 분류를 위해 사용한 variable정보(col), 해당 값(value), true인 경우 branch(tb) 그리고 false인 경우의 branch(fb) 정보가 저장된다.
 
-```[Python]
+```Python
 class Node:
         def __init__(self, col=-1, value=None, results=None, true_branch=None, false_branch=None, depth=-1):
             self.col = col          # 분류에 사용된 variable 정보
@@ -77,7 +77,7 @@ class Node:
 ```
 
 
-```[Python]
+```Python
 class DecisionTree:
 
     def __init__(self, max_depth=10, log_level=0):
