@@ -13,7 +13,7 @@ description: "Blogging on ...."
 # Random Forest
 Random forest는 decision tree 알고리즘을 사용한 bagging 기법의 일종이다.
 간단히 말하면, 학습 데이터를 사용하여 여러 개의 Decision tree를 만들고, 만들어진 Decision tree의 결과를 다수결로 최종 결과를 도출하는 알고리즘이다.
-![https://goo.gl/images/724rrJ](https://eric1goh.github.io/images/random_forest_images.png)
+[![](https://eric1goh.github.io/images/random_forest_images.png)](https://goo.gl/images/724rrJ)
 
 Random forest는 앙상블의 다양성을 위해서 다음과 같은 두가지 방법을 적용하였다.
 * Bagging : 각 Decision tree별로 학습 데이터를 다르게 사용
