@@ -24,7 +24,7 @@ Random forest는 앙상블의 다양성을 위해서 다음과 같은 두가지 
 ##### 구현 코드는 다음과 같다.
 RandomForest 클래스의 입력값으로 생성할 tree의 개수와 각 tree별로 depth의 최대값을 지정하도록 설계하였다.
 각 Decision tree별로 학습할 데이터는 입력 받은 데이터와 동일한 크기로 resampling하였다.
-Decision tree에서 사용할 predictor 변수의 개수는 ![](https://eric1goh.github.io/images/D.png) 로 고정하였다.
+Decision tree에서 사용할 predictor 변수의 개수는 ![](https://eric1goh.github.io/images/D.PNG) 로 고정하였다.
 
 ```Python
 class RandomForest:
@@ -90,7 +90,9 @@ class Node:
 
 Decision tree는 각 영역의 순도가 증가, 불확실성은 감소하는 방향으로 학습을 진행한다. 이때 사용하는 지표는 엔트로피, 지니계수가 있는데, 엔트로피 방식으로 tree를 구현하였다.
 엔트로피는 다음과 같이 계산한다.
-![](https://eric1goh.github.io/images/entropy.png){: width="80%" height="80%"){: .center}
+
+![](https://eric1goh.github.io/images/entropy.PNG)
+
 
 ```Python
 class DecisionTree:
@@ -98,7 +100,9 @@ class DecisionTree:
         self.root_node = None      # root node
         self.max_depth = max_depth # tree의 최대 depth
         self.log_level=log_level
-        
+    """ 
+     for logging    
+    """
     def log(self, level, log_data):
         if ( level <= self.log_level):
             print(log_data)
@@ -112,11 +116,16 @@ class DecisionTree:
         return self.classify(test, self.root_node)
 
     """
-    Randomly selects indexes sqrt(D).
+    split할 변수의 개수는 sqrt(전체 변수 개수)로 고정
     """
     def random_features(self, nb_features):
         return random.sample(range(nb_features), int(sqrt(nb_features)))
 
+    """
+    데이터를 지정한 변수(column)와 지정한 값(value)을 기준으로 분리한다.
+    값이 숫자인 경우에는 지정한 값고다 크거나 같은 경우와 아닌 경우로 나눈다
+    문자열인 경우에는 해당 문자열인 경우와 아닌 경우로 나눈다
+    """
     def divide_dataset(self, dataset, column, value):
         split_function = None
         if isinstance(value, int) or isinstance(value, float):
@@ -129,6 +138,9 @@ class DecisionTree:
 
         return set1, set2
 
+    """
+    엔트로피를 계산할 때 필요한 Y 값의 종류와 해당 값이 몇개 인지를 계산한다.
+    """
     def numberOfItems(self, dataset):
         results = {}
         for data in dataset:
@@ -138,6 +150,9 @@ class DecisionTree:
             results[r] += 1
         return results
 
+    """
+    엔트로피 계산
+    """
     def entropy(self, rows):
         results = self.numberOfItems(rows)
         ent = 0.0
@@ -146,6 +161,11 @@ class DecisionTree:
             ent = ent - p * np.log2(p)
         return ent
 
+    """
+    랜덤하게 선택한 변수를 기준으로 데이터를 value별로 나눌때 엔트로피값이 나누기 전과 비교하여 엔트로피가 가장 감소하는 방향으로 
+    tree를 분리한다.
+    분리 기준을 저장하는 노드와 최종 분류값을 저장하는 노드(leaf node)로 구성된다.
+    """
     def build_tree(self, dataset, depth):
         if len(dataset) == 0:
             return Node()
@@ -193,6 +213,9 @@ class DecisionTree:
             self.log(1, '  leaf node depth={}'.format(self.max_depth - depth + 1))
             return Node(results=self.numberOfItems(dataset), depth=(self.max_depth - depth + 1))
 
+    """
+    tree의 각 노드를 이동하면서 테스트 데이터의 최종 분류값을 찾는다.
+    """
     def classify(self, observation, node):
         if node.results is not None:
             return sorted(zip(node.results.values(), node.results.keys()), reverse=True)[0][1]
@@ -210,6 +233,8 @@ class DecisionTree:
                 else:
                     branch = node.fb
             return self.classify(observation, branch)
-
 ```
+
+실 데이터를 사용하여 Random Forest의
+
 # Decision Jungle
