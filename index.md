@@ -250,14 +250,18 @@ forest.score(test_x,test_y)
 Out : 0.512
 ```
 
-scikit learn에서 제공하는 Random forest와 동일한 데이터셋으로 성능을 비교하였다.
+동일한 데이터셋으로 scikit learn에서 제공하는 Random forest와 성능을 비교하였다.
 ```Python
 from sklearn.ensemble import RandomForestClassifier
+
 clf = RandomForestClassifier(n_estimators=100, max_depth=20, criterion="entropy", bootstrap=True)
 clf.fit(x, y)
+
 clf.score(test_x, test_y)
 Out : 0.497
 ```
-성능 차이는 거의 없으나, 모델을 학습할 때 성능 차이가 컸다. Random forest의 tree를 학습할 때 병렬 처리가 필요해 보인다.
+성능 차이는 거의 없으나, 모델을 학습할 때 속도 차이가 컸다. Random forest의 tree를 학습할 때 병렬 처리가 필요해 보인다.
 
 # Decision Jungle
+Random forest의 경우 뛰어난 성능에도 불구하고 Decision tree의 노드 수가 tree의 깊이 대비 지수에 비례하게 증가하는 단점이 있다. 특정 환경(모바일, 임베디드)에서는 메모리의 제한으로 인해서 tree의 깊이에 제한이 있게 되고 이는 모델의 정확도 저하하는 결과를 가져온다.
+Decision Jungle은 node간의 병합을 통해서 node의 개수를 줄여서 Random forest의 한계를 극복하고자 제안된 모델이다.
