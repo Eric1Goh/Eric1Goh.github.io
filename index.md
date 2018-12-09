@@ -24,7 +24,7 @@ Random forest는 앙상블의 다양성을 위해서 다음과 같은 두가지 
 ##### 구현 코드는 다음과 같다.
 RandomForest 클래스의 입력값으로 생성할 tree의 개수와 각 tree별로 depth의 최대값을 지정하도록 설계하였다.
 각 Decision tree별로 학습할 데이터는 입력 받은 데이터와 동일한 크기로 resampling하였다.
-Decision tree에서 사용할 predictor 변수의 개수는 $$$\sqrt{전체 변수 개수}$$$ 로 고정하였다.
+Decision tree에서 사용할 predictor 변수의 개수는 $\sqrt{전체 변수 개수}$ 로 고정하였다.
 
 ```Python
 class RandomForest:
