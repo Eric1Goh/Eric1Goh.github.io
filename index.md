@@ -66,11 +66,11 @@ class RandomForest:
 ```
 class Node:
         def __init__(self, col=-1, value=None, results=None, true_branch=None, false_branch=None, depth=-1):
-            self.col = col   # 
-            self.value = value
-            self.results = results  ## for leaf node
-            self.tb = true_branch
-            self.fb = false_branch
+            self.col = col          # 분류에 사용된 variable 정보
+            self.value = value      # 분류 경계값
+            self.results = results  # 최종 분류값 (for leaf node)
+            self.tb = true_branch   # true인 경우 branch
+            self.fb = false_branch  # false인 경우 branch
             self.depth = depth
 ```
 
