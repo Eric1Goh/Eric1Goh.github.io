@@ -8,11 +8,12 @@ description: "Blogging on ...."
  본 포스트는 고려대학교 산업경영공학과 강필성 교수님의 수업을 바탕으로 작성하였습니다.
 
 
-#####Tree 기반의 대표적인 앙상블(ensemble) 기법인 Random Forest와 Decision Jungle에 대해서 알아보자.
+#### Tree 기반의 대표적인 앙상블(ensemble) 기법인 Random Forest와 Decision Jungle에 대해서 알아보자.
 
 # Random Forest
 Random forest는 decision tree 알고리즘을 사용한 bagging 기법의 일종이다.
 간단히 말하면, 학습 데이터를 사용하여 여러 개의 Decision tree를 만들고, 만들어진 Decision tree의 결과를 다수결로 최종 결과를 도출하는 알고리즘이다.
+
 [![](https://eric1goh.github.io/images/random_forest_images.png)](https://goo.gl/images/724rrJ)
 
 Random forest는 앙상블의 다양성을 위해서 다음과 같은 두가지 방법을 적용하였다.
@@ -23,9 +24,9 @@ Random forest는 앙상블의 다양성을 위해서 다음과 같은 두가지 
 ##### 구현 코드는 다음과 같다.
 RandomForest 클래스의 입력값으로 생성할 tree의 개수와 각 tree별로 depth의 최대값을 지정하도록 설계하였다.
 각 Decision tree별로 학습할 데이터는 입력 받은 데이터와 동일한 크기로 resampling하였다.
-Decision tree에서 사용할 predictor 변수의 개수는 $$$\sqrt{전체 변수 개수}$$$로 고정하였다.
+Decision tree에서 사용할 predictor 변수의 개수는 $$$\sqrt{전체 변수 개수}$$$ 로 고정하였다.
 
-```
+```[Python]
 class RandomForest:
     def __init__(self, num_tree, max_depth=1):
         self.trees = []     #학습이 완료된 tree의 list
@@ -63,7 +64,8 @@ class RandomForest:
 먼저 tree의 각 node를 구성할 클래스이다. 
  * Leaf node의 경우는 최종 분류값(results)이 저장된다.
  * 그 외 node에서는 분류를 위해 사용한 variable정보(col), 해당 값(value), true인 경우 branch(tb) 그리고 false인 경우의 branch(fb) 정보가 저장된다.
-```
+
+```[Python]
 class Node:
         def __init__(self, col=-1, value=None, results=None, true_branch=None, false_branch=None, depth=-1):
             self.col = col          # 분류에 사용된 variable 정보
@@ -74,12 +76,13 @@ class Node:
             self.depth = depth
 ```
 
-```
+
+```[Python]
 class DecisionTree:
 
     def __init__(self, max_depth=10, log_level=0):
-        self.root_node = None
-        self.max_depth = max_depth
+        self.root_node = None      # 
+        self.max_depth = max_depth # tree의 최대 depth
         self.log_level=log_level
         
     def log(self, level, log_data):
