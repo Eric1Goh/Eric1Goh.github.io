@@ -79,12 +79,14 @@ owner:
 # For external links add external: true
 links:
   - title: <i class="iconside iconm-home"></i> Home
-    url: https://eric1goh.github.io
+    url: https://eric1goh.github.io/
   - title: <i class="iconside iconm-user"></i> About
     url: /about/
   - title: <i class="iconside iconm-quill"></i> Blog
     url: /blog/
   - title: <i class="fa fa-tags"></i> Tags
+    url: /tags/
+  - title: <i class="fa fa-archive"></i> Archive
     url: /archive/
   - title: <i class="iconside iconm-envelop"></i> Contact
     url: /contact/
