@@ -258,6 +258,7 @@ clf = RandomForestClassifier(n_estimators=100, max_depth=20, criterion="entropy"
 clf.fit(x, y)
 
 clf.score(test_x, test_y)
+-------------------------------------
 Out : 0.497
 ```
 성능 차이는 거의 없으나, 모델을 학습할 때 속도 차이가 컸다. Random forest의 tree를 학습할 때 병렬 처리가 필요해 보인다.
@@ -268,6 +269,11 @@ Decision Jungle은 node간의 병합을 통해서 node의 개수를 줄여서 Ra
 
 
 ##### 구현 코드는 다음과 같다.
+아래는 고려대학교 산업경영공학과 강성현님이 2015년 R로 작성한 코드를 2016년 동대학원의 김창엽님이 python으로 수정한 코드이다. 해당 코드가 python 2.0을 기반으로 작성되어 있어서 3.0에 맞게 일부 수정하였다.
+
+아래의 코드를 사용하려면 다음과 같은 제약 사항이 있다.
+* 종속 변수명을 'Y'로 변경
+* 학습 데이터와 테스트 데이터는 pandas DataFrame으로 저장하고 index는 0부터 시작하도록 함
 
 ```Python
 """
@@ -284,7 +290,6 @@ import os
 import math
 import numpy as np
 import pandas as pd
-#from sklearn import cross_validation
 from scipy.stats import itemfreq
 from scipy.stats import entropy
 import time
@@ -965,3 +970,48 @@ def predict_dj(tree, data):
     
     return result
 ```
+
+Random Forest와 같은 Wine Quality data set으로 모델의 성능을 평가하였다.
+* [Wine Quality Data set ](https://archive.ics.uci.edu/ml/datasets/Wine+Quality)
+* 총 instance 수 : 4,898
+* 독립 변수 : 총 12개 (wine의 산도, 밀도 등)
+* 종속 변수 : wine의 품질 지수, 3~9로 구성됨
+
+```Python
+# 학습 데이터로 모델을 학습함
+
+global idx_label 
+global limit_w
+global limit_d
+global curModel
+
+which = lambda lst:list(np.where(lst)[0])
+idx_label = which(data.columns==u"Y")
+idx_feature = which(data.columns!=u"Y")
+
+decision_jungle = model_dj(data = data,
+                           idx_feature = idx_feature,
+                           idx_label   = idx_label,
+                           limit_w     = 6,
+                           limit_d     = 8)
+```
+
+동일한 데이터셋으로 scikit learn에서 제공하는 Random forest와 성능을 비교하였다.
+```Python
+def score(model, dataset):
+    results = predict_dj(model, dataset)
+    
+    n_true = 0
+    for i in range(len(results)):
+        if results[i] == dataset['Y'][i]:
+            n_true += 1
+    return (n_true/len(results))
+
+print(score(curModel, data_test))
+-------------------------------------
+Out : 0.350
+```
+
+모델의 성능은 Random forest보다 낮았다. 
+
+### 결론
