@@ -10,9 +10,9 @@ encoding: utf-8
 title:               Ensemble Learning
 #tagline:             'foo's website
 description:         Ensemble Learning
-url: https://lanyon-plus.sbamin.com
+url: https://eric1goh.github.io/
 baseurl: ""
-urlimg: https://lanyon-plus.sbamin.com/images/
+urlimg: https://eric1goh.github.io/images/
 ## If you do not have custom domain, comment top three lines, uncomment three lines below and replace dyndna with your github userid and lanyon-plus with your project name. Also, rename CNAME file to CNAME.sample
 #url: https://dyndna.github.io/lanyon-plus
 #baseurl: "/lanyon-plus"
@@ -79,7 +79,7 @@ owner:
 # For external links add external: true
 links:
   - title: <i class="iconside iconm-home"></i> Home
-    url: /
+    url: https://eric1goh.github.io/
   - title: <i class="iconside iconm-user"></i> About
     url: /about/
   - title: <i class="iconside iconm-quill"></i> Blog
@@ -88,17 +88,9 @@ links:
     url: /tags/
   - title: <i class="fa fa-archive"></i> Archive
     url: /archive/
-  - title: <i class="iconside iconm-wordpress"></i> Old Blog
-    url: https://foo.wordpress.com
-    external: true
   - title: <i class="iconside iconm-envelop"></i> Contact
     url: /contact/
-  - title: <i class="iconside iconm-twitter"></i> Twitter
-    url: https://twitter.com/abcd
-    external: true
-  - title: <i class="iconside iconm-feed2"></i> Feed
-    url: /feed.xml
-
+  
 # Google Custom Search:
 #google_search: xyz123abc
 
