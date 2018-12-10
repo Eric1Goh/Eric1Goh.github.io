@@ -996,7 +996,7 @@ decision_jungle = model_dj(data = data,
                            limit_d     = 8)
 ```
 
-동일한 데이터셋으로 scikit learn에서 제공하는 Random forest와 성능을 비교하였다.
+테스트 데이터를 사용하여 모델의 성능(accuracy)을 계산하였다.
 ```Python
 def score(model, dataset):
     results = predict_dj(model, dataset)
