@@ -79,7 +79,7 @@ owner:
 # For external links add external: true
 links:
   - title: <i class="iconside iconm-home"></i> Home
-    url: https://eric1goh.github.io/
+    url: 
   - title: <i class="iconside iconm-user"></i> About
     url: /about/
   - title: <i class="iconside iconm-quill"></i> Blog
