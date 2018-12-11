@@ -83,9 +83,9 @@ links:
   - title: <i class="iconside iconm-user"></i> About
     url: /about/
   - title: <i class="iconside iconm-quill"></i> Blog
-    url: /blog/
+    url: blog/
   - title: <i class="fa fa-archive"></i> Archive
-    url: /archive/
+    url: archive/
   - title: <i class="iconside iconm-envelop"></i> Contact
     url: /contact/
   
