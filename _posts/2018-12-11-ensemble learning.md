@@ -1,7 +1,7 @@
 ---
 layout: default
-permalink: index.html
-title: 앙상블 기법 소개
+permalink:
+title: Randomforest_Decisionjungle
 description: "Blogging on ...."
 ---
 
