@@ -18,7 +18,12 @@ Random forest는 decision tree 알고리즘을 사용한 bagging 기법의 일�
 
 Random forest는 앙상블의 다양성을 위해서 다음과 같은 두가지 방법을 적용하였다.
 * Bagging : 각 Decision tree별로 학습 데이터를 다르게 사용
-* Randomly chosen predictor variables : Decision tree의 node 분류를 위해 사용할 변수를 randomly 선택하여 모델의 다양성 확보
+* Randomly chosen predictor variables : Decision tree의 node 분류를 위해 사용할 변수를 randomly 선택하여 모델의 다양성 확보(개별 tree의 성능은 full tree보다 조금씩 떨어질 수 있으나, 결합했을때의 성능은 더 우수한 특징이 있음)
+
+Random forest에서의 decision tree를 구성할때 다음과 같은 특징이 있다.
+* pruning을 하지 않고 과적합이 되도록 tree를 구성
+* tree를 split할 때 매번 다른 변수의 집합에서 최적의 split변수를 찾음
+![](https://eric1goh.github.io/images/selected_variable.PNG)
 
 
 ##### 구현 코드는 다음과 같다.
