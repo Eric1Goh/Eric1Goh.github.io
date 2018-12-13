@@ -972,10 +972,6 @@ Random Forest와 같은 Wine Quality data set으로 모델의 성능을 평가�
 ```Python
 
 # 학습 데이터로 모델을 학습함
-global idx_label 
-global limit_w
-global limit_d
-global curModel
 
 which = lambda lst:list(np.where(lst)[0])
 idx_label = which(data.columns==u"Y")
@@ -1002,7 +998,7 @@ def score(model, dataset):
 
     return (n_true/len(results))
 
-print(score(curModel, data_test))
+print(score(decision_jungle, data_test))
 -------------------------------------
 
 Out : 0.350
