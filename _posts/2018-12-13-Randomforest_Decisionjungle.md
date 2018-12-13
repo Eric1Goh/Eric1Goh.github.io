@@ -970,9 +970,7 @@ Random Forest와 같은 Wine Quality data set으로 모델의 성능을 평가�
 
 
 ```Python
-
 # 학습 데이터로 모델을 학습함
-
 which = lambda lst:list(np.where(lst)[0])
 idx_label = which(data.columns==u"Y")
 idx_feature = which(data.columns!=u"Y")
@@ -983,7 +981,6 @@ decision_jungle = model_dj(data = data,
                            limit_w     = 6,
                            limit_d     = 8)
 ```
-
 
 테스트 데이터를 사용하여 모델의 성능(accuracy)을 계산하였다.
 
@@ -1000,9 +997,7 @@ def score(model, dataset):
 
 print(score(decision_jungle, data_test))
 -------------------------------------
-
 Out : 0.350
-
 ```
 모델의 성능은 Random forest보다 낮았다. 
 
