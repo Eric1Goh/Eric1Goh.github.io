@@ -12,7 +12,7 @@ description: "Blogging on ...."
 
 
 
- 본 포스트는 고려대학교 산업경영공학과 강필성 교수님의 수업을 바탕으로 작성하였습니다.
+ 본 포스트는 고려대학교 산업경영공학과 강필성 교수님의 수업과 강의 자료를 바탕으로 작성하였습니다.
 
 
 
@@ -50,15 +50,18 @@ Random forest에서의 decision tree를 구성할때 다음과 같은 특징이 
 
 ![](https://eric1goh.github.io/images/selected_variable.PNG)
 
+## 
 
 Decision tree를 학습하는데 사용하지 않은 OOB(out-of-bag) 데이터를 활용하여 변수의 중요도를 계산할 수 있다.
 j번째 변수 중요도 계산 방법은 다음과 같다.
+
 1. 학습이 완료된 tree를 사용하여 OOB 데이터의 오차(e)와 j번째 변수의 데이터의 순서를 변경한 데이터의 오차(p) 차이의 평균을 계산한다.
 2. 변수 중요도는 오차의 차이들의 표준 편차로 나눈 값으로 정의한다.
+
 ![](http://eric1goh.github.io/images/variable_importance.PNG)
 
 
-
+## 
 ##### 구현 코드는 다음과 같다.
 
 RandomForest 클래스의 입력값으로 생성할 tree의 개수와 각 tree별로 depth의 최대값을 지정하도록 설계하였다.
@@ -537,7 +540,7 @@ plt.show()
 [0.39895342166741155, 1.0267727919396874, 0.5771054895485085, 0.9210520763054642, 0.6538739648931535, 0.9455094112912014, 0.688759897298887, 1.1273968925659281, 0.9210557227348752, 0.44324202947410535, 1.597140921043117]
 ```
 
-![](https://eric1goh.github.io/images/variable_importance_result.PNG)
+![](https://eric1goh.github.io/images/variable_importance_result.png)
 
 
 
